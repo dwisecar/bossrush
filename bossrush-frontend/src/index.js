@@ -1,6 +1,6 @@
 //DATA
 
-let heroTurn = true
+let heroTurn = true 
 
 function fetchHighScores(){
     fetch('http://localhost:3000/high_scores')
@@ -67,13 +67,12 @@ function updateHeroScore(heroId, newScore){
 
 //DOM
 
-function renderCreateHeroForm(){
+function addListenerHeroForm(){
     const form = document.querySelector('form')
     form.addEventListener('submit', createHero)  
 }
 
 function renderBattleHeroCard(hero){
-    clearMain()
     const main = document.querySelector('main')
     const div = document.createElement('div')
     div.className = 'hero-card'
@@ -128,6 +127,7 @@ function renderEnemy(enemy){
 function killEnemy(){
     const enemy = document.querySelector('.enemy-card')
     enemy.remove()
+    //add function to update enemy name to -defeated
     //add battle.enemy to sidebar
     fetchEnemy()
 }
@@ -192,6 +192,8 @@ function checkOkToAttack(e){
             enemy.innerText = `Health: ${enemyHealth - damage}`
         }
         updateScore((damage * 100))
+        //function to disable hero attack buttons
+        //function to start enemy attacking
 
     } else {
         return
@@ -200,5 +202,5 @@ function checkOkToAttack(e){
 }
 
 
-renderCreateHeroForm()
+addListenerHeroForm()
 fetchHighScores()
