@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Boss Rush</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h2>CREATE A HERO</h2>
+    </header>
+    
+    <div class="create-hero">
+        <form class="create-hero-form">
+            <label for="hero-name">Hero Name: </label>
+            <input type="text" name="hero-name" value=""><br>
+            <label for="melee-weapon">Melee Weapon: </label>
+            <select name="melee-weapon">
+                <option value="Axe">Axe</option>
+                <option value="Sword">Sword</option>
+                <option value="Mace">Mace</option>
+                <option value="Hammer">Hammer</option>
+                <option value="Club">Club</option>
+                <option value="Nunchucks">Nunchucks</option>
+            </select><br>
+            <label for="ranged-weapon">Ranged Weapon: </label>
+            <select name="ranged-weapon">
+                <option value="Long Bow">Long Bow</option>
+                <option value="Spear">Spear</option>
+                <option value="Ninja Star">Ninja Star</option>
+                <option value="Trident">Trident</option>
+                <option value="Dart gun">Dart gun</option>
+                <option value="Crossbow">Crossbow</option>
+            </select><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <main>
+
+    </main>
+
+    <div class="sidebar">
+        <h2>HIGH SCORES</h2>
+        <ul class=high-scores></ul>
+        <br>
+        <h2>CURRENT SCORE</h2>
+        <p class="current-score"></p>
+        <br>
+        <h2>ENEMIES DEFEATED</h2>
+        <ul class="enemies-defeated"></ul>
+
+    </div>
+
+    <script src="./src/index.js"></script>
+  </body>
+</html> 

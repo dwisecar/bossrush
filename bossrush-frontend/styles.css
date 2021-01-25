@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  header {
+    background-color: #4caf50;
+    margin: 0 auto;
+    height: 50px;
+    text-align: center;
+  }
+  
+  header h2 {
+    padding: 10px;
+    margin: 0;
+  }
+  
+  main {
+    display: grid;
+    grid-template-columns: fit-content(40%);
+    grid-template-rows: auto;
+    grid-gap: 100px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 500px;
+  }
+  
+  div.enemy-card {
+    background-color: #fd5b5b;
+    height: 300px;
+    width: 250px;
+    box-shadow: 10px 10px grey;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  div.hero-card {
+    background-color: #c2b04b;
+    height: 300px;
+    width: 250px;
+    box-shadow: 10px 10px grey;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  div.hero-card > img {
+    height: 100px;
+    width: 100px;
+  } 
+
+  div.enemy-card > img {
+    height: 100px;
+    width: 100px;
+  } 
+
+  form {
+    background-color: #c2b04b;
+    height: 100px;
+    width: 250px;
+    box-shadow: 10px 10px grey;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  p {
+    font-size: 1.5em;
+    color: black;
+    font-family: Helvetica;
+  }
+  
+  li {
+    font-size: 1.05em;
+    list-style: none;
+    padding-right: 20px;
+  }
+
+  .sidebar {
+      width: 300px;
+      background-color: rgb(108, 122, 118);
+      padding: 30px;
+      position: fixed;
+      top: 50px;
+      height: 100vh;
+  }
+  
+  button {
+    font-size: .65em;
+    color: #fff;
+    background-color: rgb(0, 128, 107);
+    border-radius: 10px;
+  }
+  
+  button.release {
+    float: right;
+    background-color: #E1332D;
+  }
+  
+  @media only screen and (min-width: 500px) {
+    main {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media only screen and (min-width: 850px) {
+    main {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
