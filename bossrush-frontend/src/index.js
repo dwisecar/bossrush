@@ -274,9 +274,13 @@ function disableCreateHeroForm(){
     form.remove()
 }
 
+
 function heroAttack(e){    
+    let hero = document.getElementById('hero-health')
+    hero.style.removeProperty('background-color')
     disableAttackButtons()
-    let damage = 0
+    setTimeout(changeHealthBackgroundColor, 2000)
+    let damage = 0 
     if(e.target.id == 'melee-attack-btn') {
         damage = Math.floor(Math.random() * (4 + 1)) + 3; //random between 7-3
     } else {
@@ -295,6 +299,8 @@ function heroAttack(e){
     else{ 
         enemy.innerText = `Health: ${enemyHealth - damage}`
         setTimeout(enemyAttack, 2500)
+        enemy.style.backgroundColor = 'red';
+   
     }
 }
 
@@ -302,13 +308,20 @@ function enemyAttack(){
     let damage = Math.floor(Math.random() * (4 + 1)) + 2; //random between 6-2
     let hero = document.getElementById('hero-health')
     let heroHealth = parseInt(hero.innerText.split(' ')[1])
+
     updateHeroDamagePopup(damage)
+
+    let enemy = document.getElementById('enemy-health')
+
     if(heroHealth - damage < 1) {
         hero.innerText = 'You Are Dead'
         setTimeout(endGame, 2000)
     }
     else{
+        enemy.style.removeProperty('background-color')
+
         hero.innerText = `Health: ${heroHealth - damage}`
+        hero.style.backgroundColor = 'red'
     }
 }
 
