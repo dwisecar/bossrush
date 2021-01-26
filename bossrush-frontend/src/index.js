@@ -8,6 +8,10 @@
 //DATA
 let heroForm = document.querySelector('.create-hero')
 
+function handleEnemyDeath(){
+    Promise.all([updateEnemyName(), updateHeroScore(), fetchBattleWon(), fetchEnemy()])
+}
+
 let heroTurn = true 
 // gets users with highest scores
 function fetchHighScores(){
@@ -153,12 +157,12 @@ function renderBattleHeroCard(hero){
     const meleeBtn = document.createElement('button')
     meleeBtn.innerText = `${hero.melee_attack} Attack`
     meleeBtn.id = 'melee-attack-btn'
-    meleeBtn.addEventListener('click', heroAttack)
+    meleeBtn.addEventListener('click', checkOkToAttack)
     
     const rangedBtn = document.createElement('button')
     rangedBtn.innerText = `${hero.ranged_attack} Attack`
     rangedBtn.id = 'ranged-attack-btn'
-    rangedBtn.addEventListener('click', heroAttack)
+    rangedBtn.addEventListener('click', checkOkToAttack)
     
     div.append(heroName, img, health, meleeBtn, rangedBtn)
     main.append(div)
@@ -194,7 +198,6 @@ function updateDefeatedEnemiesList(battle){
     li.innerText = battle.enemy.name
     const img = document.createElement('img')
     img.src = battle.enemy.image
-    img.className = 'sidebar-enemy-image'
     li.append(img)
     ul.append(li)
     setTimeout(fetchEnemy, 1000)
@@ -256,6 +259,17 @@ function clearMain(){
     fetchHighScores()
 }
 
+function myFunction() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+  
+    // Add the "show" class to DIV
+    x.className = "show";
+  
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
 //HANDLERS
 function createHero(e){
     e.preventDefault()
@@ -279,6 +293,7 @@ function changeHealthBackgroundColor(){
     hero.style.removeProperty('background-color')
 }
 
+
 function heroAttack(e){    
     disableAttackButtons()
     let damage = 0 
@@ -287,9 +302,6 @@ function heroAttack(e){
     } else {
         damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
     }
-    
-    updateEnemyDamagePopup(damage)
-    
     let enemy = document.getElementById('enemy-health')
     let enemyHealth = parseInt(enemy.innerText.split(' ')[1])
     
@@ -299,8 +311,8 @@ function heroAttack(e){
     }
     else{ 
         enemy.innerText = `Health: ${enemyHealth - damage}`
-        setTimeout(enemyAttack, 2500)
         enemy.style.backgroundColor = 'red';
+        setTimeout(enemyAttack, 1000)
     }
 }
 
@@ -308,43 +320,19 @@ function enemyAttack(){
     let damage = Math.floor(Math.random() * (4 + 1)) + 2; //random between 6-2
     let hero = document.getElementById('hero-health')
     let heroHealth = parseInt(hero.innerText.split(' ')[1])
-
-    updateHeroDamagePopup(damage)
-
     let enemy = document.getElementById('enemy-health')
-
     if(heroHealth - damage < 1) {
         hero.innerText = 'You Are Dead'
         setTimeout(endGame, 2000)
     }
     else{
+        enableAttackButtons()
         enemy.style.removeProperty('background-color')
         hero.innerText = `Health: ${heroHealth - damage}`
         hero.style.backgroundColor = 'red'
         setTimeout(changeHealthBackgroundColor, 1500)
     }
 }
-
-function updateEnemyDamagePopup(damage){
-    const enemyPopup = document.getElementById('enemy-damage')
-    enemyPopup.innerText = `-${damage}`
-    enemyPopup.className = "show";
-  
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ enemyPopup.className = enemyPopup.className.replace("show", ""); }, 1400);
-}
-
-function updateHeroDamagePopup(damage){
-    const heroPopup = document.getElementById('hero-damage')
-    heroPopup.innerText = `-${damage}`
-    heroPopup.className = "show"
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ 
-        heroPopup.className = heroPopup.className.replace("show", "")
-        enableAttackButtons()
-    }, 1400);
-}
-
 
 function endGame(){
     clearMain()
