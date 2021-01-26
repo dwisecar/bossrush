@@ -15,15 +15,18 @@ body {
     padding: 10px;
     margin: 0;
   }
+
+  .battle-container{
+    margin: 0 auto;
+    padding-left: 43%;
+  }
   
   main {
     display: grid;
-    grid-template-columns: fit-content(40%);
     grid-template-rows: auto;
-    grid-gap: 100px;
+    grid-gap: 50px;
     padding-top: 10px;
     padding-bottom: 30px;
-    padding-left: 500px;
   }
   
   div.enemy-card {
@@ -81,12 +84,23 @@ body {
 
   .sidebar {
       width: 300px;
-      background-color: rgb(108, 122, 118);
-      padding: 30px;
+      background-color: rgb(158, 185, 178);
+      padding: 20px;
       position: fixed;
       top: 50px;
+      margin-left: 10%;
       height: 100vh;
   }
+
+  .right-bar {
+    width: 300px;
+    background-color: rgb(158, 185, 178);
+    padding: 20px;
+    position: fixed;
+    top: 50px;
+    right: 10%;
+    height: 100vh;
+}
   
   button {
     font-size: .65em;
@@ -100,14 +114,13 @@ body {
     background-color: #E1332D;
   }
   
-  @media only screen and (min-width: 500px) {
-    main {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+}
   
-  @media only screen and (min-width: 850px) {
-    main {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-  }

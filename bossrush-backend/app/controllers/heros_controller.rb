@@ -2,7 +2,7 @@ class HerosController < ApplicationController
 
     def index
         heros = Hero.all
-        render json: heros
+        render json: heros, :include => {:battles => { :include => :enemy}}
     end
 
     def high_scores
@@ -11,8 +11,8 @@ class HerosController < ApplicationController
     end
 
     def show 
-        hero = hero.find(params[:id])
-        render json: hero
+        hero = Hero.find(params[:id])
+        render json: hero.last_battle, :include => :enemy
     end
 
     def create
@@ -30,6 +30,7 @@ class HerosController < ApplicationController
 
     def update
         hero = Hero.find(params[:id])
-        hero.update(score: params[:score])
+        hero.update(score: params[:score] + hero.score)
+        render json: hero
     end
 end
