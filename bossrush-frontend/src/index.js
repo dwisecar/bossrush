@@ -212,8 +212,7 @@ function addHighScore(hero){
 
 function renderCurrentScore(points){
     const score = document.querySelector('.current-score')
-    let newScore = parseInt(score.innerText) + points
-    score.innerText = newScore
+    score.innerText = points
 }
 
 function raiseEnemyDefeatedToast(){
@@ -246,6 +245,18 @@ function clearMain(){
     while (main.firstElementChild) {
         main.firstElementChild.remove()
     }
+    const enemyList = document.querySelector('.enemies-defeated')
+    while (enemyList.firstElementChild) {
+        enemyList.firstElementChild.remove()
+    }
+    const score = document.querySelector('.current-score')
+    score.innerHTML = 0
+
+    const highscores = document.querySelector('.high-scores')
+    while (highscores.firstElementChild){
+        highscores.firstElementChild.remove()
+    }
+    fetchHighScores()
 }
 
 function myFunction() {
@@ -257,7 +268,7 @@ function myFunction() {
   
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-  }
+}
 
 //HANDLERS
 function createHero(e){
