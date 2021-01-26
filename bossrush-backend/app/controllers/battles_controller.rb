@@ -5,6 +5,7 @@ class BattlesController < ApplicationController
             hero_id: params["hero"],
             enemy_id: params["enemy"]
         }
-        Battle.create(battle)
+        newBattle = Battle.create(battle)
+        render json: newBattle
     end
 end

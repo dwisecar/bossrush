@@ -1,5 +1,10 @@
 class EnemiesController < ApplicationController
 
+    def show
+        enemy = Enemy.find(params[:id])
+        render json: enemy
+    end
+    
     def create
         enemy = {
             name: Faker::Games::DnD.monster,
@@ -8,5 +13,16 @@ class EnemiesController < ApplicationController
             }
         newEnemy = Enemy.create(enemy)
         render json: newEnemy
+    end
+
+    def update
+        enemy = Enemy.find(params[:id])       
+        enemy.update(enemy_params)     
+    end
+
+    private
+
+    def enemy_params
+        params.require(:enemy).permit(:name, :image, :health)
     end
 end
