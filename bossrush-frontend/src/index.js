@@ -6,6 +6,7 @@
 //5. load new enemy
 
 //DATA
+let heroForm = document.querySelector('.create-hero')
 
 function handleEnemyDeath(){
     Promise.all([updateEnemyName(), updateHeroScore(), fetchBattleWon(), fetchEnemy()])
@@ -240,7 +241,6 @@ function changeHeaderString(string){
     h2.innerText = string
 }
 
-
 function clearMain(){
     const main = document.querySelector('main')
     while (main.firstElementChild) {
@@ -267,34 +267,45 @@ function disableCreateHeroForm(){
 }
 
 function checkOkToAttack(e){    
-    if (heroTurn){
-        let damage = 0
-        if(e.target.id == 'melee-attack-btn') {
-            damage = Math.floor(Math.random() * (4 + 1)) + 3; //random between 7-3
-        } else {
-            damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
-        }
-        let enemy = document.getElementById('enemy-health')
-        let enemyHealth = parseInt(enemy.innerText.split(' ')[1])
-        
-        if(enemyHealth - damage < 1) {
-            enemy.innerText = 'Health: 0'
-            disableAttackButtons()
-            updateEnemyName()
-        }
-        else{ 
-            enemy.innerText = `Health: ${enemyHealth - damage}`
-        }
-        
-        //function to disable hero attack buttons
-        //function to start enemy attacking
-
+    disableAttackButtons()
+    let damage = 0
+    if(e.target.id == 'melee-attack-btn') {
+        damage = Math.floor(Math.random() * (4 + 1)) + 3; //random between 7-3
     } else {
-        return
+        damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
     }
-
+    let enemy = document.getElementById('enemy-health')
+    let enemyHealth = parseInt(enemy.innerText.split(' ')[1])
+    
+    if(enemyHealth - damage < 1) {
+        enemy.innerText = 'Health: 0'
+        updateEnemyName()
+    }
+    else{ 
+        enemy.innerText = `Health: ${enemyHealth - damage}`
+        setTimeout(enemyAttack, 1000)
+    }
 }
 
+function enemyAttack(){
+    let damage = Math.floor(Math.random() * (4 + 1)) + 2; //random between 6-2
+    let hero = document.getElementById('hero-health')
+    let heroHealth = parseInt(hero.innerText.split(' ')[1])
+    if(heroHealth - damage < 1) {
+        hero.innerText = 'You Are Dead'
+        setTimeout(endGame, 2000)
+    }
+    else{
+        enableAttackButtons()
+        hero.innerText = `Health: ${heroHealth - damage}`
+    }
+}
+
+function endGame(){
+    clearMain()
+    const body = document.querySelector('body')
+    body.append(heroForm)
+}
 
 addListenerHeroForm()
 fetchHighScores()
