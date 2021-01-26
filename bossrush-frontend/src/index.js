@@ -296,6 +296,7 @@ function changeHealthBackgroundColor(){
 
 function heroAttack(e){    
     disableAttackButtons()
+
     let damage = 0 
     if(e.target.id == 'melee-attack-btn') {
         damage = Math.floor(Math.random() * (4 + 1)) + 3; //random between 7-3
