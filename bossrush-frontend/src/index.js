@@ -293,9 +293,9 @@ function changeHealthBackgroundColor(){
     hero.style.removeProperty('background-color')
 }
 
-function checkOkToAttack(e){   
+
+function heroAttack(e){    
     disableAttackButtons()
-    setTimeout(changeHealthBackgroundColor, 2000)
     let damage = 0 
     if(e.target.id == 'melee-attack-btn') {
         damage = Math.floor(Math.random() * (4 + 1)) + 3; //random between 7-3
@@ -330,6 +330,7 @@ function enemyAttack(){
         enemy.style.removeProperty('background-color')
         hero.innerText = `Health: ${heroHealth - damage}`
         hero.style.backgroundColor = 'red'
+        setTimeout(changeHealthBackgroundColor, 1500)
     }
 }
 
