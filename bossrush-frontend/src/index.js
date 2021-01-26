@@ -356,3 +356,4 @@ function endGame(){
 
 addListenerHeroForm()
 fetchHighScores()
+//test change
