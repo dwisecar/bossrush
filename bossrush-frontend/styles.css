@@ -18,28 +18,25 @@ body {
     border-bottom-style: solid;
     position: sticky;
     top: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
   
   header h2 {
-    padding: 10px;
     margin: 0;
   }
 
   .big-container {
     display: flex;
     flex-direction: column;
+    overflow-x: scroll, hidden;
+
   }
 
   .battle-container{
     margin: 0 auto; 
   }
-  
-  main {
-    margin: 0 auto;
-    padding-top: 10px;
-    padding-bottom: 30px;
-  }
-
   
   div.enemy-card, div.hero-card {
     margin-bottom: 20px;

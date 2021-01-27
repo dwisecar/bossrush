@@ -135,7 +135,7 @@ function addListenerHeroForm(){
 }
 
 function renderBattleHeroCard(hero){
-    const main = document.querySelector('main')
+    const battleContainer = document.querySelector('.battle-container')
     const div = document.createElement('div')
     div.className = 'hero-card'
     div.dataset.id = hero.id
@@ -163,16 +163,16 @@ function renderBattleHeroCard(hero){
     specialBtn.innerText = 'Special Attack'
     specialBtn.id = 'special-attack-btn'
     specialBtn.addEventListener('click', heroAttack)
-    
-    div.append(heroName, img, health, meleeBtn, rangedBtn, specialBtn)
-    main.append(div)
+
+    div.append(heroName, img, health, meleeBtn, rangedBtn)
+    battleContainer.append(div)
 
     const score = document.querySelector('.current-score')
     score.innerText = hero.score
 }
 
 function renderEnemy(enemy){
-    const main = document.querySelector('main')
+    const battleContainer = document.querySelector('.battle-container')
     const div = document.createElement('div')
     div.className = 'enemy-card'
     div.dataset.id = enemy.id
@@ -185,7 +185,7 @@ function renderEnemy(enemy){
     health.innerText = `Health: ${enemy.health}`
     health.id = 'enemy-health'
     div.append(name, img, health)
-    main.append(div) 
+    battleContainer.append(div) 
 
     changeHeaderString('BOSS RUSH')
     enableAttackButtons() 
@@ -248,10 +248,10 @@ function changeHeaderString(string){
     h2.innerText = string
 }
 
-function clearMain(){
-    const main = document.querySelector('main')
-    while (main.firstElementChild) {
-        main.firstElementChild.remove()
+function clearBattleContainer(){
+    const battleContainer = document.querySelector('.battle-container')
+    while (battleContainer.firstElementChild) {
+        battleContainer.firstElementChild.remove()
     }
     const enemyList = document.querySelector('.enemies-defeated')
     while (enemyList.firstElementChild) {
@@ -408,7 +408,7 @@ function updateHeroDamagePopup(damage){
 
 
 function endGame(){
-    clearMain()
+    clearBattleContainer()
     const body = document.querySelector('body')
     body.append(heroForm)
 }
