@@ -164,7 +164,7 @@ function renderBattleHeroCard(hero){
     specialBtn.id = 'special-attack-btn'
     specialBtn.addEventListener('click', heroAttack)
 
-    div.append(heroName, img, health, meleeBtn, rangedBtn)
+    div.append(heroName, img, health, meleeBtn, rangedBtn, specialBtn)
     battleContainer.append(div)
 
     const score = document.querySelector('.current-score')
@@ -311,7 +311,6 @@ function specialAttackFunction(){
     sideBar.style.removeProperty('background-color')
     rightBar.style.removeProperty('background-color')
     headerText.style.removeProperty('background-color')
-
 }
 let counter = 0
 function heroAttack(e){    
@@ -327,12 +326,13 @@ function heroAttack(e){
     } else if (e.target.id == 'ranged-attack-btn'){
         damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
     } else if(e.target.id == 'special-attack-btn'){
+        updateSpecialAttackGraphic()
         container.style.backgroundColor = 'blue'
         sideBar.style.backgroundColor = 'blue'
         rightBar.style.backgroundColor = 'blue'
         headerText.style.backgroundColor = 'blue'
         setTimeout(specialAttackFunction, 1500)
-        damage = Math.floor(Math.random() * (15 + 9)) + 1;
+        damage = Math.floor(Math.random() * (5 + 1)) + 15;
     }
     shakeEffectOnEnemy()
     updateEnemyDamagePopup(damage)
@@ -402,6 +402,16 @@ function updateHeroDamagePopup(damage){
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ 
         heroPopup.className = heroPopup.className.replace("show", "")
+        enableAttackButtons()
+    }, 1400);
+}
+
+function updateSpecialAttackGraphic(){
+    const special = document.getElementById('special-attack-graphic')
+    special.className = "show-effect"
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ 
+        special.className = special.className.replace("show-effect", "")
         enableAttackButtons()
     }, 1400);
 }
