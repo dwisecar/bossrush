@@ -7,7 +7,6 @@
 
 //DATA
 let heroForm = document.querySelector('.create-hero')
-
 let heroTurn = true 
 // gets users with highest scores
 function fetchHighScores(){
@@ -159,8 +158,13 @@ function renderBattleHeroCard(hero){
     rangedBtn.innerText = `${hero.ranged_attack} Attack`
     rangedBtn.id = 'ranged-attack-btn'
     rangedBtn.addEventListener('click', heroAttack)
+
+    const specialBtn = document.createElement('button')
+    specialBtn.innerText = 'Special Attack'
+    specialBtn.id = 'special-attack-btn'
+    specialBtn.addEventListener('click', heroAttack)
     
-    div.append(heroName, img, health, meleeBtn, rangedBtn)
+    div.append(heroName, img, health, meleeBtn, rangedBtn, specialBtn)
     main.append(div)
 
     const score = document.querySelector('.current-score')
@@ -221,15 +225,21 @@ function raiseEnemyDefeatedToast(){
 function disableAttackButtons(){
     const btnA = document.getElementById('melee-attack-btn')
     const btnB = document.getElementById('ranged-attack-btn')
+    const btnC = document.getElementById('special-attack-btn')
     btnA.disabled = true
     btnB.disabled = true
+    btnC.disabled = true
 }
 
 function enableAttackButtons(){
     const btnA = document.getElementById('melee-attack-btn')
     const btnB = document.getElementById('ranged-attack-btn')
+    const btnC = document.getElementById('special-attack-btn')
     btnA.disabled = false
     btnB.disabled = false
+    if(counter % 4 === 0){
+        btnC.disabled = false
+    }
 }
 
 function changeHeaderString(string){
@@ -291,13 +301,37 @@ function changeHealthBackgroundColor(){
     hero.style.removeProperty('background-color')
 }
 
+function specialAttackFunction(){
+    let container = document.querySelector('.big-container')
+    let sideBar = document.querySelector('.sidebar')
+    let rightBar = document.querySelector('.right-bar')
+    let headerText = document.getElementById('header-text')
+    container.style.removeProperty('background-color')
+    sideBar.style.removeProperty('background-color')
+    rightBar.style.removeProperty('background-color')
+    headerText.style.removeProperty('background-color')
+
+}
+let counter = 0
 function heroAttack(e){    
     disableAttackButtons()
+    counter++
     let damage = 0 
+    let container = document.querySelector('.big-container')
+    let sideBar = document.querySelector('.sidebar')
+    let rightBar = document.querySelector('.right-bar')
+    let headerText = document.getElementById('header-text')
     if(e.target.id == 'melee-attack-btn') {
         damage = Math.floor(Math.random() * (4 + 1)) + 3; //random between 7-3
-    } else {
+    } else if (e.target.id == 'ranged-attack-btn'){
         damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
+    } else if(e.target.id == 'special-attack-btn'){
+        container.style.backgroundColor = 'blue'
+        sideBar.style.backgroundColor = 'blue'
+        rightBar.style.backgroundColor = 'blue'
+        headerText.style.backgroundColor = 'blue'
+        setTimeout(specialAttackFunction, 1500)
+        damage = Math.floor(Math.random() * (15 + 9)) + 1;
     }
     
     updateEnemyDamagePopup(damage)
