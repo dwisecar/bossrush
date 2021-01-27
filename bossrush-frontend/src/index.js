@@ -313,6 +313,7 @@ function heroAttack(e){
         enemy.innerText = `Health: ${enemyHealth - damage}`
         setTimeout(enemyAttack, 2500)
         enemy.style.backgroundColor = 'red';
+   
     }
 }
 
@@ -331,9 +332,10 @@ function enemyAttack(){
     }
     else{
         enemy.style.removeProperty('background-color')
+
         hero.innerText = `Health: ${heroHealth - damage}`
         hero.style.backgroundColor = 'red'
-        setTimeout(changeHealthBackgroundColor, 1500)
+        setTimeout(changeHealthBackgroundColor, 1600)
     }
 }
 
@@ -367,3 +369,4 @@ function endGame(){
 addListenerHeroForm()
 fetchHighScores()
 addListenerForAvatar()
+
