@@ -143,7 +143,7 @@ function renderBattleHeroCard(hero){
     
     const img = document.createElement('img')
     img.src = hero.image
-    const heroName = document.createElement('p')
+    const heroName = document.createElement('h3')
     heroName.innerText = hero.name
     
     const health = document.createElement('p')
@@ -174,7 +174,7 @@ function renderEnemy(enemy){
     div.dataset.id = enemy.id
     const img = document.createElement('img')
     img.src = enemy.image
-    const name = document.createElement('p')
+    const name = document.createElement('h3')
     name.innerText = enemy.name
     name.id = 'enemy-name'
     const health = document.createElement('p')
@@ -195,6 +195,7 @@ function updateDefeatedEnemiesList(battle){
     const img = document.createElement('img')
     img.src = battle.enemy.image
     img.className = 'sidebar-enemy-image'
+    
     li.append(img)
     ul.append(li)
     setTimeout(fetchEnemy, 1000)
@@ -299,7 +300,7 @@ function heroAttack(e){
     } else {
         damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
     }
-    
+    shakeEffectOnEnemy()
     updateEnemyDamagePopup(damage)
     
     let enemy = document.getElementById('enemy-health')
@@ -321,7 +322,7 @@ function enemyAttack(){
     let damage = Math.floor(Math.random() * (4 + 1)) + 2; //random between 6-2
     let hero = document.getElementById('hero-health')
     let heroHealth = parseInt(hero.innerText.split(' ')[1])
-
+    shakeEffectOnHero()
     updateHeroDamagePopup(damage)
 
     let enemy = document.getElementById('enemy-health')
@@ -337,6 +338,18 @@ function enemyAttack(){
         hero.style.backgroundColor = 'red'
         setTimeout(changeHealthBackgroundColor, 1600)
     }
+}
+
+function shakeEffectOnHero(){
+    const heroCard = document.querySelector('.hero-card')
+    heroCard.classList.add('shake')
+    setTimeout(() => {heroCard.classList.remove('shake')}, 1500) 
+}
+
+function shakeEffectOnEnemy(){
+    const enemyCard = document.querySelector('.enemy-card')
+    enemyCard.classList.add('shake')
+    setTimeout(() => {enemyCard.classList.remove('shake')}, 1500) 
 }
 
 function updateEnemyDamagePopup(damage){

@@ -1,15 +1,23 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: relative;
+    background-image: url('https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif');
+    background-size:auto;
+    font-family: 'Press Start 2P';
+    color:white;
   }
   
   header {
-    background-color:dodgerblue;
+    background-color:rgb(0, 47, 175);
     margin: 0 auto;
-    height: 70px;
+    height: 50px;
+    margin-bottom: .8em;
     text-align: center;
-    text-justify: auto;
+    border-bottom-width: 7px;
+    border-bottom-style: solid;
+    position: sticky;
+    top: 0;
   }
   
   header h2 {
@@ -36,20 +44,25 @@ body {
     margin-bottom: 20px;
     height: 300px;
     width: 250px;
-    box-shadow: 10px 10px rgb(75, 74, 69);
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
     padding: 10px;
     border-radius: 10px;
     text-align: center;
+    border-style: solid;
+    border-width: 7px;
+  }
+
+  div.enemy-card.shake, div.hero-card.shake {
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
   }
 
   div.enemy-card {
     background-color: #ac7b7b;
-    box-shadow: 10px 10px rgb(58, 51, 51);
   }
 
   div.hero-card {
-    background-color: #fff4b6;
-    box-shadow: 10px 10px rgb(95, 94, 81);
+    background-color: rgb(0, 47, 175);
   }
 
   div.hero-card > img, div.enemy-card > img {
@@ -58,20 +71,14 @@ body {
   }
 
   form {
-    background-color: #fff8cd;
-    
-    width: 250px;
-    box-shadow: 10px 10px grey;
+    background-color: rgb(0, 47, 175);
+    width: 400px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.308);
     padding: 30px;
     border-radius: 10px;
-    text-align: center;
+    border-style: solid;
+    border-width: 7px;
     margin: 0 auto;
-  }
-  
-  p {
-    font-size: 1.5em;
-    color: black;
-    font-family: Helvetica;
   }
   
   li {
@@ -80,24 +87,40 @@ body {
     padding-right: 20px;
   }
 
-  .sidebar {
-      width: 300px;
-      background-color: rgb(158, 185, 178);
+  .sidebar, .right-bar {
+      width: 400px;
+      background-color: rgba(0, 47, 175, 0.6);  
       padding: 20px;
       position: fixed;
       top: 70px;
       margin-left: 10%;
-      height: 100vh;
+      height: 80vh;
+      border-style: solid;
+      border-width: 7px;
+      text-align: center;
+      border-radius: 10px;
+      color: white;
   }
 
   .right-bar {
-    width: 300px;
-    background-color: rgb(158, 185, 178);
-    padding: 20px;
-    position: fixed;
-    top: 70px;
     right: 10%;
-    height: 100vh;
+  }
+
+  ul.enemies-defeated {
+    font-size: 8pt;
+  }
+
+  ul.high-scores > li {
+    padding:10px;
+  }
+
+  .current-score {
+    font-size: 16pt;
+  }
+
+  .rightbar-container {
+    overflow-y: scroll, hidden;
+    height: 80vh
   }
 
   .sidebar-enemy-image {
@@ -106,12 +129,18 @@ body {
   }
   
   button {
+    font-family: 'Press Start 2P';
+    font-stretch: semi-condensed;
     font-size: .75em;
     block-size: 30px;
     color: #fff;
-    background-color: rgb(0, 29, 158);
+    background-color: rgb(184, 120, 3);
     border-radius: 5px;
-    margin: 0 .5em;
+    margin: .2em;
+  }
+
+  button:hover {
+    background-color: rgb(255, 187, 0);
   }
 
   button:disabled, button[disabled]{
@@ -129,7 +158,7 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   text-align: center;
 }
@@ -222,3 +251,17 @@ footer {
   width: 75px;
 }
 
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
