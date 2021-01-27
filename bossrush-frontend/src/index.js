@@ -76,6 +76,7 @@ function postBattle(){
 function updateHeroScore(){
     const heroCard = document.querySelector('.hero-card')
     const heroId = parseInt(heroCard.dataset.id)
+    const score = document.querySelector('.current-score')
     fetch(`http://localhost:3000/heros/${heroId}`, {
         method: 'PATCH',
         headers: {
@@ -84,12 +85,10 @@ function updateHeroScore(){
         },
         body: JSON.stringify({
             id: heroId,
-            score: 100
+            score: parseInt(score.innerText)
         })
     }).then(res => res.json())
-    .then(hero => {
-        renderCurrentScore(hero.score)
-        fetchBattleWon()})
+    .then(() => {fetchBattleWon()})
 }
 
 //changes enemy name to defeated
@@ -214,13 +213,12 @@ function addHighScore(hero){
 
 function renderCurrentScore(points){
     const score = document.querySelector('.current-score')
-    score.innerText = points
+    score.innerText = (points + parseInt(score.innerText))
 }
 
 function raiseEnemyDefeatedToast(){
     changeHeaderString('Enemy Defeated')
     setTimeout(updateHeroScore, 2000)
-    //graphical indication that enemy has been defeated
 }
 
 function disableAttackButtons(){
@@ -336,6 +334,7 @@ function heroAttack(e){
     }
     shakeEffectOnEnemy()
     updateEnemyDamagePopup(damage)
+    renderCurrentScore((damage * 100))
     
     let enemy = document.getElementById('enemy-health')
     let enemyHealth = parseInt(enemy.innerText.split(' ')[1])
