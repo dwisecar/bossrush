@@ -15,6 +15,11 @@
     
    
     <div class='big-container'>
+      
+      <div id='hero-damage'></div>
+      <div id='hero-health-added'></div>
+      <div id='enemy-damage'></div>
+
       <div class="create-hero">
         <form class="create-hero-form">
             <label for="hero-name">Hero Name: </label>
@@ -60,13 +65,14 @@
         <div id='special-attack-graphic'>
           <img src='./assets/lightningbolt.png'>
         </div>
-        <div id='hero-damage'></div>
-        <div id='enemy-damage'></div>
+        <!-- <div id='hero-damage'></div>
+        <div id='hero-health-added'></div>
+        <div id='enemy-damage'></div> -->
       </div>
 
       <div class="sidebar">
           <h2>HIGH SCORES</h2>
-          <ul class=high-scores></ul>
+          <table class=high-scores></table>
           <br>
           <h2>CURRENT SCORE</h2>
           <p class="current-score"></p>
@@ -75,7 +81,9 @@
       <div class='right-bar'>
         <div class='rightbar-container'>
           <h2>ENEMIES DEFEATED</h2>
-          <ul class="enemies-defeated"></ul>
+          <table class="enemies-defeated">
+
+          </table>
         </div>
       </div>
     </div>

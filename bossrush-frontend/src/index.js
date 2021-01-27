@@ -143,6 +143,7 @@ function renderBattleHeroCard(hero){
     img.src = hero.image
     const heroName = document.createElement('h3')
     heroName.innerText = hero.name
+    heroName.className = 'truncate'
     
     const health = document.createElement('p')
     health.innerText = `Health: ${hero.health}`
@@ -191,24 +192,39 @@ function renderEnemy(enemy){
 }
 
 function updateDefeatedEnemiesList(battle){
-    const ul = document.querySelector('.enemies-defeated')
-    const li = document.createElement('li')
-    
-    li.innerText = battle.enemy.name
+    const table = document.querySelector('.enemies-defeated')
+    const tr = document.createElement('tr')
+    const tdImg = document.createElement('td')
+    const tdName = document.createElement('td')
+
+    tdName.innerText = battle.enemy.name
     const img = document.createElement('img')
     img.src = battle.enemy.image
     img.className = 'sidebar-enemy-image'
-    
-    li.append(img)
-    ul.append(li)
+    tdImg.append(img)
+
+    tr.append(tdImg, tdName)
+    table.append(tr)
+
     setTimeout(fetchEnemy, 1000)
 }
 
 function addHighScore(hero){
-    const ul = document.querySelector('.high-scores')
-    const li = document.createElement('li')
-    li.innerText = `${hero.name}: ${hero.score}`
-    ul.append(li)
+    const table = document.querySelector('.high-scores')
+    const tr = document.createElement('tr')
+    const tdName = document.createElement('td')
+    const tdImg = document.createElement('td')
+    const tdScore = document.createElement('td')
+    const img = document.createElement('img')
+    img.src = hero.image
+    img.className = 'high-scores-image'
+    tdName.innerText = hero.name
+    tdName.className = 'truncate-table'
+    tdImg.append(img)
+    tdScore.innerText = hero.score
+    tdScore.className = 'td-score'
+    tr.append(tdImg, tdName, tdScore)
+    table.append(tr)
 }
 
 function renderCurrentScore(points){
@@ -336,6 +352,7 @@ function heroAttack(e){
     let enemyHealth = parseInt(enemy.innerText.split(' ')[1])
     
     if(enemyHealth - damage < 1) {
+        setTimeout(playHealthAddedEffect, 1000)
         enemy.innerText = 'Health: 0'
         updateEnemyName()
     }
@@ -348,7 +365,7 @@ function heroAttack(e){
 }
 
 function enemyAttack(){
-    let damage = Math.floor(Math.random() * (4 + 1)) + 2; //random between 6-2
+    let damage = Math.floor(Math.random() * (7 + 1)) + 3; //random between 10-3
     let hero = document.getElementById('hero-health')
     let heroHealth = parseInt(hero.innerText.split(' ')[1])
     shakeEffectOnHero()
@@ -411,6 +428,26 @@ function updateSpecialAttackGraphic(){
     }, 1400);
 }
 
+function playHealthAddedEffect(){
+    let healthToAdd = Math.floor(Math.random() * (7 + 1)) + 1; //random between 8-1
+    const heroPopup = document.getElementById('hero-health-added')
+    heroPopup.innerText = `+${healthToAdd}`
+    heroPopup.className = "show"
+    
+    setTimeout(function(){ 
+        heroPopup.className = heroPopup.className.replace("show", "")
+        increaseHeroHealth(healthToAdd)
+    }, 900);
+
+}
+
+function increaseHeroHealth(healthToAdd){
+    let hero = document.getElementById('hero-health')
+    let heroHealth = parseInt(hero.innerText.split(' ')[1])
+    hero.innerText = `Health: ${heroHealth + healthToAdd}`
+    hero.style.backgroundColor = 'green'
+    setTimeout(changeHealthBackgroundColor, 1600)
+}
 
 function endGame(){
     clearBattleContainer()
