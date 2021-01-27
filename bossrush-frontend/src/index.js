@@ -164,7 +164,7 @@ function renderBattleHeroCard(hero){
     specialBtn.id = 'special-attack-btn'
     specialBtn.addEventListener('click', heroAttack)
 
-    div.append(heroName, img, health, meleeBtn, rangedBtn)
+    div.append(heroName, img, health, meleeBtn, rangedBtn, specialBtn)
     battleContainer.append(div)
 
     const score = document.querySelector('.current-score')
