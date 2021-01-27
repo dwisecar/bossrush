@@ -39,6 +39,7 @@ body {
     padding-top: 10px;
     padding-bottom: 30px;
   }
+
   
   div.enemy-card, div.hero-card {
     margin-bottom: 20px;
@@ -90,10 +91,10 @@ body {
   .sidebar, .right-bar {
       width: 400px;
       background-color: rgba(0, 47, 175, 0.6);  
-      padding: 20px;
+      padding: 5px;
       position: fixed;
       top: 70px;
-      margin-left: 10%;
+      margin-left: 1%;
       height: 80vh;
       border-style: solid;
       border-width: 7px;
@@ -103,7 +104,11 @@ body {
   }
 
   .right-bar {
-    right: 10%;
+    right: 1%;
+  }
+
+  .create-hero {
+    padding: 5px, 20px
   }
 
   ul.enemies-defeated {
@@ -120,7 +125,7 @@ body {
 
   .rightbar-container {
     overflow-y: scroll, hidden;
-    height: 80vh
+    height: 80vh;
   }
 
   .sidebar-enemy-image {
