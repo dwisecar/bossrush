@@ -30,7 +30,7 @@ class HerosController < ApplicationController
 
     def update
         hero = Hero.find(params[:id])
-        hero.update(score: params[:score] + hero.score)
+        hero.update(score: params[:score])
         render json: hero
     end
 end
