@@ -318,8 +318,6 @@ function heroAttack(e){
     counter++
     let damage = 0 
     let container = document.querySelector('.big-container')
-    let sideBar = document.querySelector('.sidebar')
-    let rightBar = document.querySelector('.right-bar')
     let headerText = document.getElementById('header-text')
     if(e.target.id == 'melee-attack-btn') {
         damage = Math.floor(Math.random() * (4 + 1)) + 3; //random between 7-3
@@ -327,10 +325,8 @@ function heroAttack(e){
         damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
     } else if(e.target.id == 'special-attack-btn'){
         updateSpecialAttackGraphic()
-        container.style.backgroundColor = 'blue'
-        sideBar.style.backgroundColor = 'blue'
-        rightBar.style.backgroundColor = 'blue'
-        headerText.style.backgroundColor = 'blue'
+        container.style.backgroundColor = 'rgba(0,0,0, 0.5)'
+        headerText.style.backgroundColor = 'rgba(0,0,0, 0.5)'
         setTimeout(specialAttackFunction, 1500)
         damage = Math.floor(Math.random() * (5 + 1)) + 15;
     }
