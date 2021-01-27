@@ -256,6 +256,13 @@ function clearMain(){
     fetchHighScores()
 }
 
+function addListenerForAvatar(){
+    let avatar = document.getElementById('Avatar-set')
+    avatar.addEventListener("change", function(e){
+        handleAvatarChange(e.target.value)
+    })
+}
+
 //HANDLERS
 function createHero(e){
     e.preventDefault()
@@ -263,10 +270,15 @@ function createHero(e){
         name: e.target['hero-name'].value,
         meleeAttack: e.target['melee-weapon'].value,
         rangedAttack: e.target['ranged-weapon'].value,
-        image: './assets/Soldier.png'
+        image: e.target['Avatar'].value
     }
     disableCreateHeroForm()
     postHero(hero)
+}
+
+function handleAvatarChange(imageLink){
+    let hero = document.getElementById('hero-avatar-image')
+    hero.src = imageLink
 }
 
 function disableCreateHeroForm(){
@@ -354,3 +366,4 @@ function endGame(){
 
 addListenerHeroForm()
 fetchHighScores()
+addListenerForAvatar()

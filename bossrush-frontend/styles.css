@@ -216,3 +216,8 @@ footer {
   from {top: 58%; opacity: 1;}
   to {top: 53%; opacity: 0;}
 }
+
+#hero-avatar-image{
+  height: 75px;
+  width: 75px;
+}
