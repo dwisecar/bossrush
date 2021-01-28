@@ -192,7 +192,7 @@ footer {
 #special-attack-graphic {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
-  margin: 0 auto; /* Divide value of min-width by 2 */
+  margin-left: 47%; /* Divide value of min-width by 2 */
   position: fixed; /* Sit on top of the screen */
   z-index: 5; /* Add a z-index if needed */
 }
@@ -201,7 +201,6 @@ footer {
   visibility: visible;
   -webkit-animation: effectin 1.0s, effectout 0.5s 1;
   animation: effectin 1.0s, effectout 0.5s 1s;
-  margin-left: 8%;
 }
 
 #special-attack-graphic > img {
