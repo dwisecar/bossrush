@@ -188,6 +188,7 @@ function renderEnemy(enemy){
 
     changeHeaderString('BOSS RUSH')
     enableAttackButtons() 
+    changeBackgroundImage()
 }
 
 function updateDefeatedEnemiesList(battle){
@@ -253,6 +254,7 @@ function enableAttackButtons(){
     btnB.disabled = false
     if(specialCounter >= 4){
         btnC.disabled = false
+        btnC.style.backgroundColor = "green"
     }
 }
 
@@ -339,6 +341,7 @@ function heroAttack(e){
         damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
     } else if(e.target.id == 'special-attack-btn'){
         specialCounter = 0
+        specialAttackBackground()
         updateSpecialAttackGraphic()
         container.style.backgroundColor = 'rgba(0,0,0, 0.5)'
         headerText.style.backgroundColor = 'rgba(0,0,0, 0.5)'
@@ -357,7 +360,6 @@ function heroAttack(e){
         setTimeout(playHealthAddedEffect, 1000)
         enemy.innerText = 'Health: 0'
         backgroundCounter++
-        changeBackgroundImage()
         updateEnemyName()
     }
     else{ 
@@ -455,7 +457,7 @@ function increaseHeroHealth(healthToAdd){
 function endGame(){
     clearBattleContainer()
     backgroundCounter = 0
-    document.body.style.background = "url('https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif')"
+    document.body.style.background = "url('https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif')no-repeat center center fixed"
     document.body.style.backgroundSize = 'cover'
     const body = document.querySelector('body')
     body.append(heroForm)
@@ -467,11 +469,20 @@ addListenerForAvatar()
 
 function changeBackgroundImage(){
 if(backgroundCounter >= 10){
-    document.body.style.background = "url('./assets/backgrounds/bulkhead-wallsx3.png')"
+    document.body.style.background = "url('./assets/backgrounds/bulkhead-wallsx3.png')no-repeat center center fixed"
     document.body.style.backgroundSize = 'cover'
 } else if (backgroundCounter >= 5){
     document.body.style.background = "url('https://i.pinimg.com/originals/d2/96/74/d296744858b6f4059d016874ef7561b2.gif') no-repeat center center fixed"
     document.body.style.backgroundSize = 'cover'
+} else {
+    document.body.style.background = "url('https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif')no-repeat center center fixed"
+    document.body.style.backgroundSize = 'cover'
 }
+}
+
+function specialAttackBackground(){
+    document.body.style.background = "url('https://www.cabtivist.com/photo/825x477_upload.wikimedia.org/wikipedia/commons/thumb/d/d6/WarpTrails001.gif/258px-WarpTrails001.gif') no-repeat center center fixed"
+    document.body.style.backgroundSize = 'cover'
+    setTimeout(changeBackgroundImage, 2000)
 }
 
