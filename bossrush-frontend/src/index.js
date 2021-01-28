@@ -7,7 +7,7 @@
 
 //DATA
 let heroForm = document.querySelector('.create-hero')
-let heroTurn = true 
+let scoreCounter = 0
 // gets users with highest scores
 function fetchHighScores(){
     fetch('http://localhost:3000/high_scores')
@@ -68,7 +68,7 @@ function postBattle(){
             hero: heroId,
             enemy: enemyId
         })
-    }).then(console.log("Battle created"))
+    })
 }
 
 
@@ -85,9 +85,9 @@ function updateHeroScore(){
         },
         body: JSON.stringify({
             id: heroId,
-            score: parseInt(score.innerText)
+            score: scoreCounter
         })
-    }).then(res => res.json())
+    })
     .then(() => {fetchBattleWon()})
 }
 
@@ -107,10 +107,7 @@ function updateEnemyName(){
             id: enemyId,
             name: enemyName.innerText
         })
-    }).then(() => {
-        console.log(`updated enemy name`)
-        raiseEnemyDefeatedToast()
-    })
+    }).then(() => {raiseEnemyDefeatedToast()})
 
 }
 
@@ -122,9 +119,7 @@ function fetchBattleWon(){
     //fetch last battle hero won
     fetch(`http://localhost:3000/heros/${heroId}`)
     .then(res => res.json())
-    .then(battle => {
-        console.log(battle.enemy.name)
-        updateDefeatedEnemiesList(battle)})
+    .then(battle => updateDefeatedEnemiesList(battle))
 }
 
 //DOM
@@ -263,6 +258,7 @@ function changeHeaderString(string){
 }
 
 function clearBattleContainer(){
+    scoreCounter = 0
     const battleContainer = document.querySelector('.battle-container')
     while (battleContainer.firstElementChild) {
         battleContainer.firstElementChild.remove()
@@ -346,6 +342,7 @@ function heroAttack(e){
     }
     shakeEffectOnEnemy()
     updateEnemyDamagePopup(damage)
+    scoreCounter += (damage * 100)
     renderCurrentScore((damage * 100))
     
     let enemy = document.getElementById('enemy-health')
@@ -437,7 +434,7 @@ function playHealthAddedEffect(){
     setTimeout(function(){ 
         heroPopup.className = heroPopup.className.replace("show", "")
         increaseHeroHealth(healthToAdd)
-    }, 900);
+    }, 850);
 
 }
 
