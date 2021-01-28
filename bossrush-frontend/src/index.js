@@ -9,6 +9,7 @@
 let heroForm = document.querySelector('.create-hero')
 let scoreCounter = 0
 let specialCounter = 0
+let backgroundCounter = 0
 
 // gets users with highest scores
 function fetchHighScores(){
@@ -355,6 +356,8 @@ function heroAttack(e){
     if(enemyHealth - damage < 1) {
         setTimeout(playHealthAddedEffect, 1000)
         enemy.innerText = 'Health: 0'
+        backgroundCounter++
+        changeBackgroundImage()
         updateEnemyName()
     }
     else{ 
@@ -451,6 +454,9 @@ function increaseHeroHealth(healthToAdd){
 
 function endGame(){
     clearBattleContainer()
+    backgroundCounter = 0
+    document.body.style.background = "url('https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif')"
+    document.body.style.backgroundSize = 'cover'
     const body = document.querySelector('body')
     body.append(heroForm)
 }
@@ -458,4 +464,14 @@ function endGame(){
 addListenerHeroForm()
 fetchHighScores()
 addListenerForAvatar()
+
+function changeBackgroundImage(){
+if(backgroundCounter >= 10){
+    document.body.style.background = "url('./assets/backgrounds/bulkhead-wallsx3.png')"
+    document.body.style.backgroundSize = 'cover'
+} else if (backgroundCounter >= 5){
+    document.body.style.background = "url('https://i.pinimg.com/originals/d2/96/74/d296744858b6f4059d016874ef7561b2.gif') no-repeat center center fixed"
+    document.body.style.backgroundSize = 'cover'
+}
+}
 
