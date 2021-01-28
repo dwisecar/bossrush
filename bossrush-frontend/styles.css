@@ -2,11 +2,15 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    background-image: url('https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif');
-    background-size:auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: url('https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif') no-repeat center center fixed;
     font-family: 'Press Start 2P';
     color:white;
   }
+
 
   .truncate {
     width: 250px;
