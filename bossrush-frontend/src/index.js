@@ -9,7 +9,7 @@
 let heroForm = document.querySelector('.create-hero')
 let scoreCounter = 0
 let specialCounter = 0
-let backgroundCounter = 0
+let backgroundCounter = 1
 
 // gets users with highest scores
 function fetchHighScores(){
@@ -441,7 +441,7 @@ function increaseHeroHealth(healthToAdd){
 
 function endGame(){
     clearBattleContainer()
-    backgroundCounter = 0
+    backgroundCounter = 1
     document.body.style.background = "url('https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif')no-repeat center center fixed"
     document.body.style.backgroundSize = 'cover'
     const body = document.querySelector('body')
@@ -453,10 +453,13 @@ fetchHighScores()
 addListenerForAvatar()
 
 function changeBackgroundImage(){
-if(backgroundCounter >= 10){
+if(backgroundCounter >= 16){
+    document.body.style.background = "url('https://i.imgur.com/lOT25Y3.gif')no-repeat center center fixed"
+    document.body.style.backgroundSize = 'cover'
+} else if(backgroundCounter >= 11){
     document.body.style.background = "url('./assets/backgrounds/bulkhead-wallsx3.png')no-repeat center center fixed"
     document.body.style.backgroundSize = 'cover'
-} else if (backgroundCounter >= 5){
+} else if (backgroundCounter >= 6){
     document.body.style.background = "url('https://i.pinimg.com/originals/d2/96/74/d296744858b6f4059d016874ef7561b2.gif') no-repeat center center fixed"
     document.body.style.backgroundSize = 'cover'
 } else {
@@ -471,3 +474,4 @@ function specialAttackBackground(){
     setTimeout(changeBackgroundImage, 2000)
 }
 
+//https://i.imgur.com/lOT25Y3.gif
