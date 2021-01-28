@@ -47,7 +47,8 @@ function fetchEnemy() {
         headers: {
             'Content-type': 'application/json',
             Accept: 'application/json'
-        }
+        },
+        body: JSON.stringify({counter: backgroundCounter})
     }).then(res => res.json())
     .then(enemy => {
         renderEnemy(enemy)
@@ -253,6 +254,7 @@ function enableAttackButtons(){
     btnB.disabled = false
     if(specialCounter >= 4){
         btnC.disabled = false
+        btnC.style.backgroundColor = "green"
     }
 }
 
@@ -316,23 +318,10 @@ function changeHealthBackgroundColor(){
     hero.style.removeProperty('background-color')
 }
 
-function specialAttackFunction(){
-    let container = document.querySelector('.big-container')
-    let sideBar = document.querySelector('.sidebar')
-    let rightBar = document.querySelector('.right-bar')
-    let headerText = document.getElementById('header-text')
-    container.style.removeProperty('background-color')
-    sideBar.style.removeProperty('background-color')
-    rightBar.style.removeProperty('background-color')
-    headerText.style.removeProperty('background-color')
-}
-
 function heroAttack(e){    
     disableAttackButtons()
     specialCounter++
     let damage = 0 
-    let container = document.querySelector('.big-container')
-    let headerText = document.getElementById('header-text')
     if(e.target.id == 'melee-attack-btn') {
         damage = Math.floor(Math.random() * (4 + 1)) + 3; //random between 7-3
     } else if (e.target.id == 'ranged-attack-btn'){
@@ -340,9 +329,6 @@ function heroAttack(e){
     } else if(e.target.id == 'special-attack-btn'){
         specialCounter = 0
         updateSpecialAttackGraphic()
-        container.style.backgroundColor = 'rgba(0,0,0, 0.5)'
-        headerText.style.backgroundColor = 'rgba(0,0,0, 0.5)'
-        setTimeout(specialAttackFunction, 1500)
         damage = Math.floor(Math.random() * (5 + 1)) + 15;
     }
     shakeEffectOnEnemy()

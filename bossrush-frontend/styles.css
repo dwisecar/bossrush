@@ -73,7 +73,7 @@ body {
   }
 
   div.enemy-card {
-    background-color: black;
+    background: url('./assets/backgrounds/enemy_card.png') center;
   }
 
   div.hero-card {
@@ -165,24 +165,28 @@ body {
     font-size: .75em;
     block-size: 30px;
     color: #fff;
-    background-color: rgb(184, 120, 3);
+    background-color: rgb(126, 82, 0);
     border-radius: 5px;
     margin: .2em;
   }
 
   button:hover {
-    background-color: rgb(255, 187, 0);
+    background-color: rgb(184, 135, 1);
   }
 
   button:disabled, button[disabled]{
     background-color: rgba(50, 57, 88, 0.322);
     color: rgb(156, 152, 152);
   }
-  
-  button.release {
-    float: right;
-    background-color: #E1332D;
+
+  #special-attack-button {
+    background-color: green;
   }
+
+  button#special-attack-button:hover {
+    background-color: rgb(1, 172, 1);
+  }
+  
   
 footer {
   position: fixed;
