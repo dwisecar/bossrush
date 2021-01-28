@@ -21,7 +21,7 @@ class HerosController < ApplicationController
             melee_attack: params["meleeAttack"],
             ranged_attack: params["rangedAttack"],
             image: params["image"],
-            health: 100,
+            health: 50,
             score: 0
         }
         newHero = Hero.create(hero)
