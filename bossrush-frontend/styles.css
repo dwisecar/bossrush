@@ -94,6 +94,7 @@ body {
     border-style: solid;
     border-width: 7px;
     margin: 0 auto;
+    text-align: center;
   }
   
   li {
@@ -249,7 +250,7 @@ footer {
 #hero-health-added.show {
   visibility: visible;
   -webkit-animation: healthfadein 0.7s, healthfadeout 0.3s 1s;
-  animation: healthfadein 0.7s, healthfadeout 0.3s 1s;
+  animation: healthfadein 0.7s, healthfadeout 0.4s 1s;
 }
 
 /* Animations to fade the damage in and out */
@@ -264,13 +265,13 @@ footer {
 }
 
 @-webkit-keyframes healthfadeout {
-  from {top: 23%; opacity: 1;}
-  to {top: 23%; opacity: 0;}
+  from {opacity: 1;}
+  to {opacity: 0;}
 }
 
 @keyframes healthfadeout {
-  from {top: 23%; opacity: 1;}
-  to {top: 23%; opacity: 0;}
+  from {opacity: 1;}
+  to {opacity: 0;}
 }
   
 /* The hero-damage - position it at the bottom and in the middle of the screen */

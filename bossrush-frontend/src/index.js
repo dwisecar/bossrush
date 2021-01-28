@@ -8,7 +8,9 @@
 //DATA
 let heroForm = document.querySelector('.create-hero')
 let scoreCounter = 0
+let specialCounter = 0
 let backgroundCounter = 0
+
 // gets users with highest scores
 function fetchHighScores(){
     fetch('http://localhost:3000/high_scores')
@@ -158,6 +160,7 @@ function renderBattleHeroCard(hero){
     const specialBtn = document.createElement('button')
     specialBtn.innerText = 'Special Attack'
     specialBtn.id = 'special-attack-btn'
+    specialBtn.setAttribute('disabled', 'true')
     specialBtn.addEventListener('click', heroAttack)
 
     div.append(heroName, img, health, meleeBtn, rangedBtn, specialBtn)
@@ -248,7 +251,7 @@ function enableAttackButtons(){
     const btnC = document.getElementById('special-attack-btn')
     btnA.disabled = false
     btnB.disabled = false
-    if(counter % 4 === 0){
+    if(specialCounter >= 4){
         btnC.disabled = false
     }
 }
@@ -323,10 +326,10 @@ function specialAttackFunction(){
     rightBar.style.removeProperty('background-color')
     headerText.style.removeProperty('background-color')
 }
-let counter = 0
+
 function heroAttack(e){    
     disableAttackButtons()
-    counter++
+    specialCounter++
     let damage = 0 
     let container = document.querySelector('.big-container')
     let headerText = document.getElementById('header-text')
@@ -335,6 +338,7 @@ function heroAttack(e){
     } else if (e.target.id == 'ranged-attack-btn'){
         damage = Math.floor(Math.random() * (11 + 1)) + 1; //random between 12-1
     } else if(e.target.id == 'special-attack-btn'){
+        specialCounter = 0
         updateSpecialAttackGraphic()
         container.style.backgroundColor = 'rgba(0,0,0, 0.5)'
         headerText.style.backgroundColor = 'rgba(0,0,0, 0.5)'
@@ -424,7 +428,6 @@ function updateSpecialAttackGraphic(){
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ 
         special.className = special.className.replace("show-effect", "")
-        enableAttackButtons()
     }, 1400);
 }
 
@@ -437,7 +440,7 @@ function playHealthAddedEffect(){
     setTimeout(function(){ 
         heroPopup.className = heroPopup.className.replace("show", "")
         increaseHeroHealth(healthToAdd)
-    }, 850);
+    }, 700);
 
 }
 
