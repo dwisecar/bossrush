@@ -16,12 +16,27 @@ Enter in the command line: bundle install
 Enter in to the command line: rails db:migrate
 Enter in to the command line: rails s
 Then open bossrush-frontend/index.html in to your browser
+
+
+
 Artwork References:
 Heroes and Sprites: https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32
+
+
 Background 1: https://i.imgur.com/lOT25Y3.gif
+
+
 Background 2: https://i.pinimg.com/originals/d2/96/74/d296744858b6f4059d016874ef7561b2.gif
+
+
 Background 3: https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif
+
+
+
 Background 4: https://dribbble.com/shots/2095353-Bulkhead-Walls
+
+
+
 Created With
 
 Ruby version: 2.6.1
