@@ -1,10 +1,15 @@
 Boss Rush
+
 A turn based battle application where you can choose your hero and battle through different stages with boss fights before moving on to the next stage.
 
 Description
+
+
 The loading screen is where the player may choose their hero name, avatar, melee weapon, and ranged weapon. In total there are six melee weapons, six ranged weapons, and ten different avatars to choose from. After customizing your player and weapons, hit submit and you will be brought to the battle screen where you will face your first enemy. Here you may choose each turn to use your melee weapon or ranged weapon. There is also a special attack option which a hero can only use once every four turns. Each enemy you defeat will show on the right side of the screen to show your enemies defeated. The enemy and hero will exchange attacks until one is defeated. Every fifth enemy will present as a boss fight before entering the next area. After a hero's health reaches zero you will be brought back to the main screen to play again. If your score is high enough your name and avatar will be added to the high scores list.
 
 Setup and Installation
+
+
 Fork and clone this repository
 Enter in to the command line: cd bossrush-backend
 Enter in the command line: bundle install
