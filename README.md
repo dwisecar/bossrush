@@ -17,6 +17,13 @@ Enter in to the command line: rails db:migrate
 Enter in to the command line: rails s
 Then open bossrush-frontend/index.html in to your browser
 
+Screenshots:
+
+<img width="1440" alt="Screenshot1" src="https://user-images.githubusercontent.com/67489174/111008438-f2895280-8345-11eb-90bb-aee52b31465a.png">
+
+<img width="1440" alt="Screenshot2" src="https://user-images.githubusercontent.com/67489174/111008451-fd43e780-8345-11eb-8368-8732af4a02a5.png">
+
+<img width="1440" alt="Screenshot3" src="https://user-images.githubusercontent.com/67489174/111008471-06cd4f80-8346-11eb-9575-8e57816d4ceb.png">
 
 
 Artwork References:
