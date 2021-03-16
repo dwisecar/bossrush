@@ -1,24 +1,38 @@
-# README
+<h1>Boss Rush</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h3>A turn based battle application where you can choose your hero and battle through different stages with boss fights before moving on to the next stage.</h3>
 
-Things you may want to cover:
+<h2>Description</h2>
 
-* Ruby version
+<h3>The loading screen is where the player may choose their hero name, avatar, melee weapon, and ranged weapon. In total there are six melee weapons, six ranged weapons, and ten different avatars to choose from. After customizing your player and weapons, hit submit and you will be brought to the battle screen where you will face your first enemy. Here you may choose each turn to use your melee weapon or ranged weapon. There is also a special attack option which a hero can only use once every four turns. Each enemy you defeat will show on the right side of the screen to show your enemies defeated. The enemy and hero will exchange attacks until one is defeated. Every fifth enemy will present as a boss fight before entering the next area. After a hero's health reaches zero you will be brought back to the main screen to play again. If your score is high enough your name and avatar will be added to the high scores list.</h3>
 
-* System dependencies
+<h2>Setup and Installation</h2>
 
-* Configuration
+<h3>Fork and clone this repository
+Enter in to the command line: cd bossrush-backend
+Enter in the command line: bundle install
+Enter in to the command line: rails db:migrate
+Enter in to the command line: rails s
+Then open bossrush-frontend/index.html in to your browser</h3>
 
-* Database creation
+<h2>Screenshots</h2>
+<img src="./img/Screenshot1.jpg" height='500' width='750'>
+<img src="./img/Screenshot2.jpg" height='500' width='750'>
+<img src="./img/Screenshot3.jpg" height='500' width='750'>
 
-* Database initialization
+<h3>Artwork References:
+Heroes and Sprites: https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32</h3>
 
-* How to run the test suite
+<h3>Background 1: https://i.imgur.com/lOT25Y3.gif</h3>
 
-* Services (job queues, cache servers, search engines, etc.)
+<h3>Background 2: https://i.pinimg.com/originals/d2/96/74/d296744858b6f4059d016874ef7561b2.gif</h3>
 
-* Deployment instructions
+<h3>Background 3: https://i.pinimg.com/originals/d3/a4/98/d3a498f8838f5046ba13cde9af643250.gif</h3>
 
-* ...
+<h3>Background 4: https://dribbble.com/shots/2095353-Bulkhead-Walls</h3>
+
+<h3>Created With</h3>
+
+<h3>Ruby version: 2.6.1</h3>
+<h3>Rails version: 6.1.1</h3>
+<h3>Javascript: ES6</h3>
